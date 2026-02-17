@@ -27,7 +27,7 @@ jobs:
       - name: Build Web
         run: |
           cd apps/web
-          flutter build web --release --web-renderer html --base-href "/purelink/"
+          flutter build web --release html --base-href "/purelink/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
