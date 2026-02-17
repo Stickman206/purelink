@@ -1,0 +1,27 @@
+# --- Node.js / NestJS ---
+node_modules/
+dist/
+.nest/
+.env
+.env.local
+npm-debug.log*
+
+# --- Flutter ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.lock
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- System ---
+.DS_Store
+Thumbs.db
