@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "flutter build web --release --web-renderer html",
+  "outputDirectory": "build/web",
+  "installCommand": "flutter pub get"
+}
