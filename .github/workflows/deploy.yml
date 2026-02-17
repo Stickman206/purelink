@@ -1,0 +1,35 @@
+name: Deploy Flutter Web to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0' # 指定稳定版本
+          channel: 'stable'
+
+      - name: Install Dependencies
+        run: |
+          cd apps/web
+          flutter pub get
+
+      - name: Build Web
+        run: |
+          cd apps/web
+          # 关键：加上 --base-href，因为 GitHub Pages 是子路径
+          flutter build web --release --web-renderer html --base-href "/purelink/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apps/web/build/web
