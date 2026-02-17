@@ -14,14 +14,10 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-<<<<<<< HEAD
-          flutter-version: '3.41.1' # 指定稳定版本
-=======
-          flutter-version: '3.19.0'  # 👈 强制指定 3.19.0
->>>>>>> 58d9bbd (ci: force flutter 3.19.0 and downgrade deps)
+          flutter-version: '3.19.0'
           channel: 'stable'
-          cache: true                # 开启缓存加速
-          cache-key: "flutter-3.19.0" # 👈 强制缓存键，避免混用
+          cache: true
+          cache-key: "flutter-3.19.0"
 
       - name: Install Dependencies
         run: |
@@ -31,13 +27,7 @@ jobs:
       - name: Build Web
         run: |
           cd apps/web
-<<<<<<< HEAD
-          # 关键：加上 --base-href，因为 GitHub Pages 是子路径
-          flutter build web --release --base-href "/purelink/"
-=======
-          # 👇 使用 html 渲染器，兼容性最好
           flutter build web --release --web-renderer html --base-href "/purelink/"
->>>>>>> 58d9bbd (ci: force flutter 3.19.0 and downgrade deps)
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
