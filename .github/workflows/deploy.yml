@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@vv2.1.0
         with:
           flutter-version: '3.41.1' # 指定稳定版本
           channel: 'stable'
@@ -26,7 +26,7 @@ jobs:
         run: |
           cd apps/web
           # 关键：加上 --base-href，因为 GitHub Pages 是子路径
-          flutter build web --release --web-renderer html --base-href "/purelink/"
+          flutter build web --release --base-href "/purelink/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
